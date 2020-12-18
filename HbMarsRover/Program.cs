@@ -30,12 +30,17 @@ namespace HbMarsRover
             plateau.SetHeight(5);
             plateau.SetWidth(5);
 
-            var firstRover = new Rover("1 2 N");
+            var firstRover = new Rover();
+            
+            roverService.LaunchRover(firstRover,plateau,"1 2 N");
+            
             roverService.MoveToLocation(firstRover,plateau,"LMLMLMLMM");
             
             Console.WriteLine($"First rover final coordinates : {firstRover.XCoordinate} {firstRover.YCoordinate} {firstRover.Direction}");
             
-            var secondRover = new Rover("3 3 E");
+            var secondRover = new Rover();
+            
+            roverService.LaunchRover(secondRover,plateau,"3 3 E");
             roverService.MoveToLocation(secondRover, plateau, "MMRMMRMRRM");
             
             Console.WriteLine($"Second rover final coordinates : {secondRover.XCoordinate} {secondRover.YCoordinate} {secondRover.Direction}");
