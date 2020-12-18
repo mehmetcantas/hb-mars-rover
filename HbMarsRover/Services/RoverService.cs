@@ -25,7 +25,6 @@ namespace HbMarsRover.Services
                     break;
                 default:
                     throw new ArgumentException("Direction is invalid");
-                    break;
             }
 
             return rover;
@@ -53,7 +52,6 @@ namespace HbMarsRover.Services
                     break;
                 default:
                     throw new ArgumentException("Direction is invalid");
-                    break;
             }
 
             return rover;
@@ -81,7 +79,6 @@ namespace HbMarsRover.Services
                     break;
                 default:
                     throw new ArgumentException("Direction is invalid");
-                    break;
             }
 
             return rover;
