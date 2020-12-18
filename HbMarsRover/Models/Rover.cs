@@ -14,11 +14,5 @@ namespace HbMarsRover
         public int YCoordinate { get; set; }
         public string Direction { get; set; }
 
-        public Rover(string roverLocation)
-        {
-            XCoordinate = int.Parse(roverLocation.Split(" ")[0]);
-            YCoordinate = int.Parse(roverLocation.Split(" ")[1]);
-            Direction = roverLocation.Split(" ")[2];
-        }
     }
 }
