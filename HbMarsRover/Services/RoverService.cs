@@ -101,6 +101,8 @@ namespace HbMarsRover.Services
                     case 'M':
                         MoveForward(rover);
                         break;
+                    default:
+                        throw new ArgumentException("Location command unrecognized");
                 }
             }
 
