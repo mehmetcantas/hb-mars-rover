@@ -27,8 +27,8 @@ namespace HbMarsRoverUnitTest
         }
         
         [Theory]
-        [InlineData(4,0)]
-        [InlineData(5,0)]
+        [InlineData(4,-3)]
+        [InlineData(5,-1)]
         public void Should_Fail_Create_Plateau_When_Given_Invalid_Height(int width,int height)
         {
             Plateau plateau = new();
@@ -36,8 +36,8 @@ namespace HbMarsRoverUnitTest
         }
         
         [Theory]
-        [InlineData(0,3)]
-        [InlineData(0,4)]
+        [InlineData(-5,3)]
+        [InlineData(-1,4)]
         public void Should_Fail_Create_Plateau_When_Given_Invalid_Width(int width,int height)
         {
             Plateau plateau = new();
