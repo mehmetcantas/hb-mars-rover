@@ -10,16 +10,16 @@ namespace HbMarsRover
 
         public void SetWidth(int width)
         {
-            if (width <= 0)
-                throw new ArgumentException("Insufficient width");
+            if (width < 0)
+                throw new ArgumentException("Invalid plateau width.");
 
             Width = width;
         }
 
         public void SetHeight(int height)
         {
-            if (height <= 0)
-                throw new ArgumentException("Insufficient height");
+            if (height < 0)
+                throw new ArgumentException("Invalid plateau height.");
 
             Height = height;
         }
