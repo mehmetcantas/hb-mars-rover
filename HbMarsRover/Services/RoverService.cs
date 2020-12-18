@@ -4,11 +4,10 @@ namespace HbMarsRover.Services
 {
     public class RoverService : IRoverService
     {
-        public Rover SpinLeft(Rover rover)
+        public Rover TurnLeft(Rover rover)
         {
             switch (rover.Direction)
             {
-                
                 case "N": // While you facing North and if you turn left you facing to West
                     rover.Direction = "W";
                     break;
@@ -32,7 +31,7 @@ namespace HbMarsRover.Services
             return rover;
         }
 
-        public Rover SpinRight(Rover rover)
+        public Rover TurnRight(Rover rover)
         {
             switch (rover.Direction)
             {
@@ -83,6 +82,29 @@ namespace HbMarsRover.Services
                 default:
                     throw new ArgumentException("Direction is invalid");
                     break;
+            }
+
+            return rover;
+        }
+
+
+        public Rover MoveToLocation(Rover rover , string commands)
+        {
+            var seperatedCommands = commands.ToCharArray();
+            foreach (var item in seperatedCommands)
+            {
+                switch (item)
+                {
+                    case 'L':
+                        TurnLeft(rover);
+                        break;
+                    case 'R':
+                        TurnRight(rover);
+                        break;
+                    case 'M':
+                        MoveForward(rover);
+                        break;
+                }
             }
 
             return rover;
