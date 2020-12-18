@@ -1,6 +1,8 @@
 # hb-mars-rover
 Mars rover case study
 
+[![Mars Rover Actions Status](https://github.com/mehmetcantas/hb-mars-rover/workflows/hb-mars-rover/badge.svg)](https://github.com/mehmetcantas/hb-mars-rover/actions)
+
 
 # Code Review: Mars Rover
 
