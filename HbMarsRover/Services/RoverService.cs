@@ -57,13 +57,13 @@ namespace HbMarsRover.Services
             return rover;
         }
 
-        public Rover MoveForward(Rover rover)
+        public Rover MoveForward(Rover rover,Plateau plateau)
         {
             switch (rover.Direction)
             {
                 
                 case "N": // While you facing North and if you turn right you facing to East
-                    rover.YCoordinate += 1;
+                        rover.YCoordinate += 1;
                     break;
                 
                 case "S": // While you facing South and if you turn right you facing to West
@@ -85,7 +85,7 @@ namespace HbMarsRover.Services
         }
 
 
-        public Rover MoveToLocation(Rover rover , string commands)
+        public Rover MoveToLocation(Rover rover ,Plateau plateau, string commands)
         {
             var seperatedCommands = commands.ToCharArray();
             foreach (var item in seperatedCommands)
@@ -99,7 +99,7 @@ namespace HbMarsRover.Services
                         TurnRight(rover);
                         break;
                     case 'M':
-                        MoveForward(rover);
+                        MoveForward(rover,plateau);
                         break;
                     default:
                         throw new ArgumentException("Location command unrecognized");

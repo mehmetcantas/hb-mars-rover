@@ -4,8 +4,8 @@ namespace HbMarsRover.Services
     {
         Rover TurnLeft(Rover rover);
         Rover TurnRight(Rover rover);
-        Rover MoveForward(Rover rover);
+        Rover MoveForward(Rover rover,Plateau plateau);
 
-        Rover MoveToLocation(Rover rover,string commands);
+        Rover MoveToLocation(Rover rover,Plateau plateau,string commands);
     }
 }
