@@ -1,4 +1,4 @@
-name: .NET
+name: hb-mars-rover
 
 on:
   push:
