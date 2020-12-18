@@ -102,10 +102,10 @@ namespace HbMarsRover.Services
             rover.YCoordinate = int.Parse(launchLocation[1]);
             rover.Direction = launchLocation[2];
 
-            if (rover.YCoordinate > plateau.Width || rover.YCoordinate < 1)
+            if (rover.YCoordinate > plateau.Width || rover.YCoordinate < 0)
                 throw new Exception("Rover cannot be launched on this coordinates");
             
-            if (rover.XCoordinate > plateau.Height || rover.XCoordinate < 1)
+            if (rover.XCoordinate > plateau.Height || rover.XCoordinate < 0)
                 throw new Exception("Rover cannot be launched on this coordinates");
             
             
