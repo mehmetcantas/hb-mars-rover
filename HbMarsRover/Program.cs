@@ -1,7 +1,4 @@
 ﻿using System;
-using HbMarsRover.Services;
-using Microsoft.Extensions.DependencyInjection;
-
 namespace HbMarsRover
 {
     class Program
@@ -18,29 +15,23 @@ namespace HbMarsRover
          */
         static void Main(string[] args)
         {
-            var serviceProvider = new ServiceCollection()
-                .AddSingleton<IRoverService, RoverService>()
-                .BuildServiceProvider();
-
-            var roverService = serviceProvider.GetService<IRoverService>();
-
             var plateau = new Plateau();
             plateau.SetHeight(5);
             plateau.SetWidth(5);
 
             var firstRover = new Rover();
 
-            roverService.LaunchRover(firstRover, plateau, "1 2 N");
+            firstRover.LaunchRover(plateau, "1 2 N");
 
-            roverService.MoveToLocation(firstRover, plateau, "LMLMLMLMM");
+            firstRover.MoveToLocation(plateau, "LMLMLMLMM");
 
             Console.WriteLine(
                 $"First rover final coordinates : {firstRover.XCoordinate} {firstRover.YCoordinate} {firstRover.Direction}");
 
             var secondRover = new Rover();
 
-            roverService.LaunchRover(secondRover, plateau, "3 3 E");
-            roverService.MoveToLocation(secondRover, plateau, "MMRMMRMRRM");
+            secondRover.LaunchRover(plateau, "3 3 E");
+            secondRover.MoveToLocation(plateau, "MMRMMRMRRM");
 
             Console.WriteLine(
                 $"Second rover final coordinates : {secondRover.XCoordinate} {secondRover.YCoordinate} {secondRover.Direction}");
