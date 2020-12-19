@@ -17,6 +17,23 @@ namespace HbMarsRover
         public int YCoordinate { get; private set; }
         public Direction Direction { get; private set; }
         
+
+        #region Methods
+        public void LaunchRover(Plateau plateau, string coordinates)
+        {
+            var launchLocation = coordinates.Split(" ");
+
+            XCoordinate = int.Parse(launchLocation[0]);
+            YCoordinate = int.Parse(launchLocation[1]);
+            Direction = (Direction) Enum.Parse(typeof(Direction), launchLocation[2].ToUpper());
+
+            if (YCoordinate > plateau.Width || YCoordinate < 0)
+                throw new Exception("Rover cannot be launched on this coordinates");
+
+            if (XCoordinate > plateau.Height || XCoordinate < 0)
+                throw new Exception("Rover cannot be launched on this coordinates");
+        }
+
         public void TurnLeft()
         {
             switch (Direction)
@@ -99,21 +116,6 @@ namespace HbMarsRover
             }
         }
 
-        public void LaunchRover(Plateau plateau, string coordinates)
-        {
-            var launchLocation = coordinates.Split(" ");
-
-            XCoordinate = int.Parse(launchLocation[0]);
-            YCoordinate = int.Parse(launchLocation[1]);
-            Direction = (Direction) Enum.Parse(typeof(Direction), launchLocation[2].ToUpper());
-
-            if (YCoordinate > plateau.Width || YCoordinate < 0)
-                throw new Exception("Rover cannot be launched on this coordinates");
-
-            if (XCoordinate > plateau.Height || XCoordinate < 0)
-                throw new Exception("Rover cannot be launched on this coordinates");
-        }
-
         public void MoveToLocation(Plateau plateau, string commands)
         {
             var seperatedCommands = commands.ToCharArray();
@@ -135,5 +137,7 @@ namespace HbMarsRover
                 }
             }
         }
+        #endregion
+        
     }
 }
