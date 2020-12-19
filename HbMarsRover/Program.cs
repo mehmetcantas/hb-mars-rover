@@ -16,34 +16,34 @@ namespace HbMarsRover
          * Each rover will be finished sequentially, which means that the second rover won't start to move until the first one has finished moving.
          * output for each rover should be its final co-ordinates and heading.
          */
-        
-        
         static void Main(string[] args)
         {
             var serviceProvider = new ServiceCollection()
                 .AddSingleton<IRoverService, RoverService>()
                 .BuildServiceProvider();
-            
+
             var roverService = serviceProvider.GetService<IRoverService>();
-            
+
             var plateau = new Plateau();
             plateau.SetHeight(5);
             plateau.SetWidth(5);
 
             var firstRover = new Rover();
-            
-            roverService.LaunchRover(firstRover,plateau,"1 2 N");
-            
-            roverService.MoveToLocation(firstRover,plateau,"LMLMLMLMM");
-            
-            Console.WriteLine($"First rover final coordinates : {firstRover.XCoordinate} {firstRover.YCoordinate} {firstRover.Direction}");
-            
+
+            roverService.LaunchRover(firstRover, plateau, "1 2 N");
+
+            roverService.MoveToLocation(firstRover, plateau, "LMLMLMLMM");
+
+            Console.WriteLine(
+                $"First rover final coordinates : {firstRover.XCoordinate} {firstRover.YCoordinate} {firstRover.Direction}");
+
             var secondRover = new Rover();
-            
-            roverService.LaunchRover(secondRover,plateau,"3 3 E");
+
+            roverService.LaunchRover(secondRover, plateau, "3 3 E");
             roverService.MoveToLocation(secondRover, plateau, "MMRMMRMRRM");
-            
-            Console.WriteLine($"Second rover final coordinates : {secondRover.XCoordinate} {secondRover.YCoordinate} {secondRover.Direction}");
+
+            Console.WriteLine(
+                $"Second rover final coordinates : {secondRover.XCoordinate} {secondRover.YCoordinate} {secondRover.Direction}");
 
             Console.ReadLine();
         }
