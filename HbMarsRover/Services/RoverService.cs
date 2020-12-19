@@ -1,4 +1,5 @@
 using System;
+using HbMarsRover.Enums;
 
 namespace HbMarsRover.Services
 {
@@ -8,20 +9,20 @@ namespace HbMarsRover.Services
         {
             switch (rover.Direction)
             {
-                case "N": // While you facing North and if you turn left you facing to West
-                    rover.Direction = "W";
+                case Direction.N: // While you facing North and if you turn left you facing to West
+                    rover.Direction = Direction.W;
                     break;
                 
-                case "S": // While you facing South and if you turn left you facing to East
-                    rover.Direction = "E";
+                case Direction.S: // While you facing South and if you turn left you facing to East
+                    rover.Direction = Direction.E;
                     break;
                 
-                case "W": // While you facing West and if you turn left you facing to South
-                    rover.Direction = "S";
+                case Direction.W: // While you facing West and if you turn left you facing to South
+                    rover.Direction = Direction.S;
                     break;
                 
-                case "E": // While you facing East and if you turn left you facing to North
-                    rover.Direction = "N";
+                case Direction.E: // While you facing East and if you turn left you facing to North
+                    rover.Direction = Direction.N;
                     break;
                 default:
                     throw new ArgumentException("Direction is invalid");
@@ -35,20 +36,20 @@ namespace HbMarsRover.Services
             switch (rover.Direction)
             {
                 
-                case "N": // While you facing North and if you turn right you facing to East
-                    rover.Direction = "E";
+                case Direction.N: // While you facing North and if you turn right you facing to East
+                    rover.Direction = Direction.E;
                     break;
                 
-                case "S": // While you facing South and if you turn right you facing to West
-                    rover.Direction = "W";
+                case Direction.S: // While you facing South and if you turn right you facing to West
+                    rover.Direction = Direction.W;
                     break;
                 
-                case "W": // While you facing West and if you turn right you facing to North
-                    rover.Direction = "N";
+                case Direction.W: // While you facing West and if you turn right you facing to North
+                    rover.Direction = Direction.N;
                     break;
                
-                case "E":  // While you facing East and if you turn right you facing to South
-                    rover.Direction = "S";
+                case Direction.E:  // While you facing East and if you turn right you facing to South
+                    rover.Direction = Direction.S;
                     break;
                 default:
                     throw new ArgumentException("Direction is invalid");
@@ -62,27 +63,27 @@ namespace HbMarsRover.Services
             switch (rover.Direction)
             {
                 
-                case "N": // While you facing North and if you turn right you facing to East
+                case Direction.N: // While you facing North and if you turn right you facing to East
                     if ((rover.YCoordinate + 1) > plateau.Width)
                         throw new Exception("Rover cannot be move any further on the Y axis");
                     
                     rover.YCoordinate += 1;
                     break;
                 
-                case "S": // While you facing South and if you turn right you facing to West
+                case Direction.S: // While you facing South and if you turn right you facing to West
                     if ((rover.YCoordinate - 1) < 0)
                         throw new Exception("Rover cannot be move any further on Y axis");
                     
                     rover.YCoordinate -= 1;
                     break;
                 
-                case "W": // While you facing West and if you turn right you facing to North
+                case Direction.W: // While you facing West and if you turn right you facing to North
                     if ((rover.XCoordinate - 1) < 0)
                         throw new Exception("Rover cannot be move any further on the X axis");
                     rover.XCoordinate -= 1;
                     break;
                
-                case "E":  // While you facing East and if you turn right you facing to South
+                case Direction.E:  // While you facing East and if you turn right you facing to South
                     if ((rover.XCoordinate + 1) > plateau.Width)
                         throw new Exception("Rover cannot be move any further on the X axis");
                     rover.XCoordinate += 1;
@@ -100,7 +101,7 @@ namespace HbMarsRover.Services
 
             rover.XCoordinate = int.Parse(launchLocation[0]);
             rover.YCoordinate = int.Parse(launchLocation[1]);
-            rover.Direction = launchLocation[2];
+            rover.Direction = (Direction)Enum.Parse(typeof(Direction),launchLocation[2].ToUpper());
 
             if (rover.YCoordinate > plateau.Width || rover.YCoordinate < 0)
                 throw new Exception("Rover cannot be launched on this coordinates");

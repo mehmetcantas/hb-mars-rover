@@ -1,3 +1,5 @@
+using HbMarsRover.Enums;
+
 namespace HbMarsRover
 {
     // Rover(s) position represented by x,y,z values (z coordinates for directions)
@@ -12,7 +14,7 @@ namespace HbMarsRover
     {
         public int XCoordinate { get; set; }
         public int YCoordinate { get; set; }
-        public string Direction { get; set; }
+        public Direction Direction { get; set; }
 
     }
 }
