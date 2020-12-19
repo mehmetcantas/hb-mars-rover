@@ -2,7 +2,6 @@ using System;
 using FluentAssertions;
 using HbMarsRover;
 using HbMarsRover.Enums;
-using HbMarsRover.Services;
 using Xunit;
 
 namespace HbMarsRoverUnitTest
@@ -10,37 +9,15 @@ namespace HbMarsRoverUnitTest
     public class RoverTests
     {
         [Fact]
-        public void Should_Success_Create_Rover()
-        {
-            var rover = new Rover
-            {
-                Direction = Direction.N,
-                XCoordinate = 1,
-                YCoordinate = 2
-            };
-
-            rover.XCoordinate.Should().Be(1);
-            rover.YCoordinate.Should().Be(2);
-            rover.Direction.Should().Be(Direction.N);
-        }
-
-        [Fact]
         public void Should_Success_Rover_Launch()
         {
-            var roverService = new RoverService();
-
-            var rover = new Rover
-            {
-                Direction = Direction.N,
-                XCoordinate = 1,
-                YCoordinate = 2
-            };
+            var rover = new Rover();
 
             var plateau = new Plateau();
             plateau.SetHeight(5);
             plateau.SetWidth(5);
 
-            roverService.LaunchRover(rover, plateau, "1 2 N");
+            rover.LaunchRover(plateau, "1 2 N");
 
             rover.XCoordinate.Should().Be(1);
             rover.YCoordinate.Should().Be(2);
@@ -50,21 +27,13 @@ namespace HbMarsRoverUnitTest
         [Fact]
         public void Should_Success_Rover_Turn_Left()
         {
-            var roverService = new RoverService();
-
-            var rover = new Rover
-            {
-                Direction = Direction.N,
-                XCoordinate = 1,
-                YCoordinate = 2
-            };
-
+            var rover = new Rover();
             var plateau = new Plateau();
             plateau.SetHeight(5);
             plateau.SetWidth(5);
 
-            roverService.LaunchRover(rover, plateau, "1 2 N");
-            roverService.TurnLeft(rover);
+            rover.LaunchRover(plateau, "1 2 N");
+            rover.TurnLeft();
 
             rover.XCoordinate.Should().Be(1);
             rover.YCoordinate.Should().Be(2);
@@ -74,21 +43,14 @@ namespace HbMarsRoverUnitTest
         [Fact]
         public void Should_Success_Rover_Turn_Right()
         {
-            var roverService = new RoverService();
-
-            var rover = new Rover
-            {
-                Direction = Direction.N,
-                XCoordinate = 1,
-                YCoordinate = 2
-            };
+            var rover = new Rover();
 
             var plateau = new Plateau();
             plateau.SetHeight(5);
             plateau.SetWidth(5);
 
-            roverService.LaunchRover(rover, plateau, "1 2 N");
-            roverService.TurnLeft(rover);
+            rover.LaunchRover(plateau, "1 2 N");
+            rover.TurnRight();
 
             rover.XCoordinate.Should().Be(1);
             rover.YCoordinate.Should().Be(2);
@@ -98,20 +60,14 @@ namespace HbMarsRoverUnitTest
         [Fact]
         public void Should_Success_Rover_Move_Forward()
         {
-            var roverService = new RoverService();
-
-            var rover = new Rover
-            {
-                Direction = Direction.N,
-                XCoordinate = 1,
-                YCoordinate = 2
-            };
+            var rover = new Rover();
 
             var plateau = new Plateau();
             plateau.SetHeight(5);
             plateau.SetWidth(5);
 
-            roverService.LaunchRover(rover, plateau, "1 2 N");
+            rover.LaunchRover(plateau, "1 2 N");
+            rover.MoveForward(plateau);
 
             rover.XCoordinate.Should().Be(1);
             rover.YCoordinate.Should().Be(3);
@@ -124,21 +80,14 @@ namespace HbMarsRoverUnitTest
         public void Should_Success_Rover_Move_To_Location(string initialRoverLocation, string commands,
             string expectedFinalLocation)
         {
-            var roverService = new RoverService();
-
-            var rover = new Rover
-            {
-                Direction = Direction.N,
-                XCoordinate = 1,
-                YCoordinate = 2
-            };
+            var rover = new Rover();
 
             var plateau = new Plateau();
             plateau.SetHeight(5);
             plateau.SetWidth(5);
 
-            roverService.LaunchRover(rover, plateau, initialRoverLocation);
-            roverService.MoveToLocation(rover, plateau, commands);
+            rover.LaunchRover(plateau, initialRoverLocation);
+            rover.MoveToLocation(plateau, commands);
 
             rover.XCoordinate.Should().Be(int.Parse(expectedFinalLocation.Split(" ")[0]));
             rover.YCoordinate.Should().Be(int.Parse(expectedFinalLocation.Split(" ")[1]));
