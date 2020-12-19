@@ -19,8 +19,6 @@ namespace HbMarsRoverUnitTest
             plateau.SetHeight(height);
             plateau.SetWidth(width);
             
-            
-            
             plateau.Should().NotBeNull();
             plateau.Width.Should().Be(width);
             plateau.Height.Should().Be(height);
@@ -32,6 +30,7 @@ namespace HbMarsRoverUnitTest
         public void Should_Fail_Create_Plateau_When_Given_Invalid_Height(int width,int height)
         {
             Plateau plateau = new();
+            
             Assert.Throws<ArgumentException>(() => plateau.SetHeight(height));
         }
         
@@ -41,8 +40,8 @@ namespace HbMarsRoverUnitTest
         public void Should_Fail_Create_Plateau_When_Given_Invalid_Width(int width,int height)
         {
             Plateau plateau = new();
+            
             Assert.Throws<ArgumentException>(() => plateau.SetWidth(width));
-
         }
     }
 }
