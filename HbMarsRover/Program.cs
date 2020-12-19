@@ -15,19 +15,26 @@ namespace HbMarsRover
          */
         static void Main(string[] args)
         {
+            #region Create Plateau
             var plateau = new Plateau();
             plateau.SetHeight(5);
             plateau.SetWidth(5);
-
+            #endregion
+            
+            #region First Rover
+            
             var firstRover = new Rover();
 
             firstRover.LaunchRover(plateau, "1 2 N");
-
             firstRover.MoveToLocation(plateau, "LMLMLMLMM");
 
             Console.WriteLine(
                 $"First rover final coordinates : {firstRover.XCoordinate} {firstRover.YCoordinate} {firstRover.Direction}");
 
+            #endregion
+            
+            #region Second Rover
+            
             var secondRover = new Rover();
 
             secondRover.LaunchRover(plateau, "3 3 E");
@@ -36,6 +43,8 @@ namespace HbMarsRover
             Console.WriteLine(
                 $"Second rover final coordinates : {secondRover.XCoordinate} {secondRover.YCoordinate} {secondRover.Direction}");
 
+            #endregion
+            
             Console.ReadLine();
         }
     }
