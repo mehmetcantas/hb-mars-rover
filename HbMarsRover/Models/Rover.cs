@@ -27,10 +27,10 @@ namespace HbMarsRover
             YCoordinate = int.Parse(launchLocation[1]);
             Direction = (Direction) Enum.Parse(typeof(Direction), launchLocation[2].ToUpper());
 
-            if (YCoordinate > plateau.Width || YCoordinate < 0)
+            if (YCoordinate > plateau.Height || YCoordinate < 0)
                 throw new Exception("Rover cannot be launched on this coordinates");
 
-            if (XCoordinate > plateau.Height || XCoordinate < 0)
+            if (XCoordinate > plateau.Width || XCoordinate < 0)
                 throw new Exception("Rover cannot be launched on this coordinates");
         }
 
@@ -87,7 +87,7 @@ namespace HbMarsRover
             switch (Direction)
             {
                 case Direction.N: // While you facing North and if you turn right you facing to East
-                    if ((YCoordinate + 1) > plateau.Width)
+                    if ((YCoordinate + 1) > plateau.Height)
                         throw new Exception("Rover cannot be move any further on the Y axis");
 
                     YCoordinate += 1;
